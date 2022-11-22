@@ -1,0 +1,124 @@
+CREATE TABLE "Towers"(
+    "Dart Monkey"   STRING
+    "Primary"       STRING
+    PRIMARY KEY("11"    INT)
+);
+
+CREATE TABLE "Upgrades"(
+    "000"           INT
+    "Base Dart"     STRING
+    "200"           INT
+    PRIMARY KEY("11"    INT)
+);
+
+CREATE TABLE "Upgrades"(
+    "100"           INT
+    "Sharp Shots"   STRING
+    "140"           INT
+    PRIMARY KEY("11"    INT)
+);
+
+CREATE TABLE "Upgrades"(
+    "200"               INT
+    "Razor Sharp Shots" STRING
+    "220"               INT
+    PRIMARY KEY("11"    INT)
+);
+
+CREATE TABLE "Upgrades"(
+    "300"           INT
+    "Spike-o-pult"  STRING
+    "300"           INT
+    PRIMARY KEY("11"    INT)
+);
+
+CREATE TABLE "Upgrades"(
+    "400"           INT
+    "Juggernaut"    STRING
+    "1800"          INT
+    PRIMARY KEY("11"    INT)
+);
+
+CREATE TABLE "Upgrades"(
+    "500"               INT
+    "Ultra-Juggernaut"  STRING
+    "15000"             INT
+    PRIMARY KEY("11"    INT)
+);
+
+CREATE TABLE "Upgrades"(
+    "010"           INT
+    "Quick Shots"   STRING
+    "100"           INT
+    PRIMARY KEY("11"    INT)
+);
+
+CREATE TABLE "Upgrades"(
+    "020"               INT
+    "Very Quick Shots"  STRING
+    "190"               INT
+    PRIMARY KEY("11"    INT)
+);
+
+CREATE TABLE "Upgrades"(
+    "030"           INT
+    "Triple Shot"   STRING
+    "400"           INT
+    PRIMARY KEY("11"    INT)
+);
+
+CREATE TABLE "Upgrades"(
+    "040"                   INT
+    "Super Monkey Fan Club" STRING
+    "8000"                  INT
+    PRIMARY KEY("11"        INT)
+);
+
+CREATE TABLE "Upgrades"(
+    "050"                       INT
+    "Plasma Monkey Fan Club"    STRING
+    "45000"                     INT
+    PRIMARY KEY("11"            INT)
+);
+
+CREATE TABLE "Upgrades"(
+    "001"               INT
+    "Long Range Darts"  STRING
+    "90"                INT
+    PRIMARY KEY("11"    INT)
+);
+
+CREATE TABLE "Upgrades"(
+    "002"               INT
+    "Enhanced Eyesight" STRING
+    "200"               INT
+    PRIMARY KEY("11"    INT)
+);
+
+CREATE TABLE "Upgrades"(
+    "003"           INT
+    "Crossbow"      STRING
+    "625"           INT
+    PRIMARY KEY("11"    INT)
+);
+
+CREATE TABLE "Upgrades"(
+    "004"           INT
+    "Sharp Shooter" STRING
+    "2000"          INT
+    PRIMARY KEY("11"    INT)
+);
+
+CREATE TABLE "Upgrades"(
+    "005"               INT
+    "Crossbow Master"   STRING
+    "23500"             INT
+    PRIMARY KEY("11"    INT)
+);
+
+CREATE TABLE "Upgrades"(
+    "555"                   INT
+    "Apex Plasma Master"    STRING
+    "350000"                INT
+    PRIMARY KEY("11"    INT)
+);
