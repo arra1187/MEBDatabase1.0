@@ -17,11 +17,16 @@ public class UpgradeRepository
         mUpgradeDao = db.upgradeDao();
     }
 
-    void insert(Upgrade upgrade)
-    {
+    void insert(Upgrade upgrade) {
         UpgradeRoomDatabase.databaseWriteExecutor.execute(() ->
         {
-           mUpgradeDao.insert(upgrade);
+            mUpgradeDao.insert(upgrade);
         });
+    }
+
+    int getUpgradeCost(Integer upgradeID) {
+        int cost = mUpgradeDao.getUpgradeCost(upgradeID);
+
+        return cost;
     }
 }

@@ -16,5 +16,5 @@ public interface UpgradeDao {
     void deleteAll();
 
     @Query("SELECT mCost FROM upgrade_table WHERE mUpgradeID = :upgradeID")
-    LiveData<List<Tower>> getUpgradeCost(int upgradeID);
+    int getUpgradeCost(int upgradeID);
 }

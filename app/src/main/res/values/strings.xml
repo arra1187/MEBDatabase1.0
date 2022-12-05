@@ -22,7 +22,9 @@
         <item>5</item>
     </string-array>
 
-    <string name="Top">Top Path</string>
-    <string name="Mid">Middle Path</string>
-    <string name="Bottom">Bottom Path</string>
+    <string name="top">Top Path</string>
+    <string name="middle">Middle Path</string>
+    <string name="bottom">Bottom Path</string>
+
+    <string name="thing">Hello there</string>
 </resources>

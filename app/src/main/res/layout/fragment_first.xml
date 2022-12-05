@@ -30,9 +30,11 @@
 
     <Spinner
         android:id="@+id/top_path"
-        android:layout_width="48dp"
+        android:layout_width="80dp"
         android:layout_height="48dp"
-        android:contentDescription="Tiers"
+        android:contentDescription="@string/top"
+        android:dropDownSelector="@color/black"
+        android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/middle_path"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,9 +42,11 @@
 
     <Spinner
         android:id="@+id/middle_path"
-        android:layout_width="48dp"
+        android:layout_width="80dp"
         android:layout_height="48dp"
-        android:contentDescription="Tiers"
+        android:contentDescription="@string/middle"
+        android:dropDownSelector="@color/black"
+        android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/bottom_path"
         app:layout_constraintStart_toEndOf="@+id/top_path"
@@ -51,9 +55,11 @@
 
     <Spinner
         android:id="@+id/bottom_path"
-        android:layout_width="48dp"
+        android:layout_width="80dp"
         android:layout_height="48dp"
-        android:contentDescription="Tiers"
+        android:contentDescription="@string/bottom"
+        android:dropDownSelector="@color/black"
+        android:spinnerMode="dropdown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/middle_path"

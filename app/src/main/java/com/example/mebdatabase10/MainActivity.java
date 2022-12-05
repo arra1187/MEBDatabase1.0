@@ -19,124 +19,65 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
-    /*
-    //@Fts4
-    @Entity(tableName = "Towers")
-    public class Tower {
-        @PrimaryKey
-        //@ColumnInfo(name = "rowid")
-        public int towerID; // <int><int> - <1-4><1-7>
-
-        public String title;
-        public String category;
-    }
-
-    //@Fts4
-    @Entity(tableName = "Upgrades")
-    public class Upgrade {
-        @PrimaryKey
-        //@ColumnInfo(name = "rowid")
-        public int parentTowerID; // <int><int> - <1-4><1-7>
-
-        public int upgradeID;
-        public String title;
-        public int cost;
-    }
-
-    public class towerWithUpgrades {
-        @Embedded public Tower tower;
-        @Relation(
-                parentColumn = "towerID",
-                entityColumn = "parentTowerID"
-        )
-        public List<Upgrade> upgrades;
-    }
-
-    @Dao
-    public interface AllDao {
-        @Query("SELECT * FROM Towers")
-        List<Tower> getAll();
-
-        @Query("SELECT * FROM Towers WHERE title IN (:towerIDs)")
-        List<Tower> loadAllByIds(int[] towerIDs);
-
-        @Query("SELECT * FROM Towers WHERE title LIKE :towerName")
-        Tower findByTitle(String towerName);
-
-        @Insert
-        void insertAll(Tower... towers);
-
-        @Delete
-        void delete(Tower user);
-
-        @Transaction
-        @Query("SELECT * FROM Towers")
-        public List<towerWithUpgrades> getTowersWithUpgrades();
-    }
-
-    @androidx.room.Database(entities = {Tower.class}, version = 1)
-    public abstract class AppDatabase extends RoomDatabase {
-        public abstract AllDao towerDao();
-    }
-
-    AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "tower_database").createFromAsset("database/tower.db").build();
-
-    AllDao towerDao = db.towerDao();
-    List<Tower> towers = towerDao.getAll();*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_first);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        Spinner topSpin = findViewById(R.id.top_path);
+        ArrayAdapter<CharSequence> topAdapter = ArrayAdapter.createFromResource(this,
+                R.array.tiers, android.R.layout.simple_spinner_item);
+        topAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        topSpin.setAdapter(topAdapter);
+        //spinner.setOnItemSelectedListener(this);
 
-        setSupportActionBar(binding.toolbar);
+        Spinner midSpin = findViewById(R.id.middle_path);
+        ArrayAdapter<CharSequence> midAdapter = ArrayAdapter.createFromResource(this,
+                R.array.tiers, android.R.layout.simple_spinner_item);
+        midAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        midSpin.setAdapter(midAdapter);
+        //spinner.setOnItemSelectedListener(this);
 
-        /*NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        Spinner lowSpin =  findViewById(R.id.bottom_path);
+        ArrayAdapter<CharSequence> lowAdapter = ArrayAdapter.createFromResource(this,
+                R.array.tiers, android.R.layout.simple_spinner_item);
+        lowAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        lowSpin.setAdapter(lowAdapter);
+        //spinner.setOnItemSelectedListener(this);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+        //binding = ActivityMainBinding.inflate(getLayoutInflater());
+        //setContentView(binding.getRoot());
+
+        //setSupportActionBar(binding.toolbar);
+
+        //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        //appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+
+        /*binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });*/
-
-        Spinner spinner=findViewById(R.id.top_path);
-        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,
-                R.array.tiers, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
-
-        spinner=findViewById(R.id.middle_path);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
-
-        spinner=findViewById(R.id.bottom_path);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
     }
 
-    @Override
+    /*@Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
     {
         String tier = parent.getItemAtPosition(position).toString();
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> parent) { }
+    public void onNothingSelected(AdapterView<?> parent) { }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
