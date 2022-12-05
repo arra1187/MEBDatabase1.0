@@ -21,4 +21,8 @@
         <item>4</item>
         <item>5</item>
     </string-array>
+
+    <string name="Top">Top Path</string>
+    <string name="Mid">Middle Path</string>
+    <string name="Bottom">Bottom Path</string>
 </resources>

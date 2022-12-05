@@ -16,6 +16,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.toolbar);
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        /*NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
@@ -108,21 +109,34 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
 
-        Spinner
-                spinnerLanguages=findViewById(R.id.top_path);
-                ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,
+        Spinner spinner=findViewById(R.id.top_path);
+        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,
                 R.array.tiers, android.R.layout.simple_spinner_item);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-                spinnerLanguages.setAdapter(adapter);
-                spinnerLanguages=findViewById(R.id.middle_path);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-                spinnerLanguages.setAdapter(adapter);
-                spinnerLanguages=findViewById(R.id.bottom_path);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-                spinnerLanguages.setAdapter(adapter);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+
+        spinner=findViewById(R.id.middle_path);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
+
+        spinner=findViewById(R.id.bottom_path);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+    {
+        String tier = parent.getItemAtPosition(position).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) { }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
