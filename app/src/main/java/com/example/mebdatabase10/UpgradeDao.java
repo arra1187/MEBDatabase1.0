@@ -15,6 +15,6 @@ public interface UpgradeDao {
     @Query("DELETE FROM upgrade_table")
     void deleteAll();
 
-    @Query("SELECT mCost FROM upgrade_table WHERE mUpgradeID = :upgradeID")
-    int getUpgradeCost(int upgradeID);
+    @Query("SELECT * FROM upgrade_table WHERE mUpgradeID = :upgradeID")
+    Upgrade getUpgrade(int upgradeID);
 }

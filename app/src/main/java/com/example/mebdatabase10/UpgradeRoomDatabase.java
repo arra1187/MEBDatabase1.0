@@ -8,9 +8,11 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+@Database(entities = {Upgrade.class}, version = 1, exportSchema = false)
 public abstract class UpgradeRoomDatabase extends RoomDatabase
 {
 
@@ -36,7 +38,7 @@ public abstract class UpgradeRoomDatabase extends RoomDatabase
         return INSTANCE;
     }
 
-    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback()
+    private static final RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback()
     {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db)

@@ -5,14 +5,13 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
+import java.util.concurrent.Callable;
 
-public class UpgradeRepository
-{
+public class UpgradeRepository {
     private UpgradeDao mUpgradeDao;
     //private LiveData<List<Upgrade>> mAllUpgrades;
 
-    UpgradeRepository(Application application)
-    {
+    UpgradeRepository(Application application) {
         UpgradeRoomDatabase db = UpgradeRoomDatabase.getDatabase(application);
         mUpgradeDao = db.upgradeDao();
     }
@@ -24,9 +23,10 @@ public class UpgradeRepository
         });
     }
 
-    int getUpgradeCost(Integer upgradeID) {
-        int cost = mUpgradeDao.getUpgradeCost(upgradeID);
-
-        return cost;
+    Upgrade getUpgrade(int upgradeID) {
+        //UpgradeRoomDatabase.databaseWriteExecutor.execute(() ->
+        //{
+            return mUpgradeDao.getUpgrade(upgradeID);
+        //});
     }
 }

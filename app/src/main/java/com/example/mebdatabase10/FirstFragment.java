@@ -1,22 +1,22 @@
 package com.example.mebdatabase10;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.navigation.fragment.NavHostFragment;
-import androidx.room.Dao;
+
 
 import com.example.mebdatabase10.databinding.FragmentFirstBinding;
 
+import java.util.List;
 import java.util.Objects;
 
 public class FirstFragment extends Fragment {
@@ -37,9 +37,9 @@ public class FirstFragment extends Fragment {
         binding = FragmentFirstBinding.inflate(inflater, container, false);
         View fragmentFirstLayout = inflater.inflate(R.layout.fragment_first, container, false);
 
-        topTextView = fragmentFirstLayout.findViewById(R.id.top_path);
-        midTextView = fragmentFirstLayout.findViewById(R.id.middle_path);
-        bottomTextView = fragmentFirstLayout.findViewById(R.id.bottom_path);
+        //topTextView = fragmentFirstLayout.findViewById(R.id.top_path);
+        //midTextView = fragmentFirstLayout.findViewById(R.id.middle_path);
+        //bottomTextView = fragmentFirstLayout.findViewById(R.id.bottom_path);
 
         return fragmentFirstLayout;
     }
@@ -55,7 +55,18 @@ public class FirstFragment extends Fragment {
             }
         });*/
 
-        binding.enterButton.setOnClickListener(new View.OnClickListener() {
+        /*view.findViewById(R.id.enter_button).setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                giveCost(view);
+            }
+        });*/
+
+        Button enterButton = (Button) view.findViewById(R.id.enter_button);
+        enterButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view) {
                 giveCost(view);
@@ -65,7 +76,7 @@ public class FirstFragment extends Fragment {
 
     public void giveCost(View view)
     {
-        UpgradeRepository repository = new UpgradeRepository(getActivity().getApplication());;
+        /*UpgradeRepository repository = new UpgradeRepository(getActivity().getApplication());;
         int cost = 0;
 
         Spinner topSpin = view.findViewById(R.id.top_path);
@@ -101,7 +112,7 @@ public class FirstFragment extends Fragment {
 
         //cost += repository.getUpgradeCost(upgradeID);
 
-        /*Spinner midSpin = view.findViewById(R.id.middle_path);
+        Spinner midSpin = view.findViewById(R.id.middle_path);
         itemText = (String) midSpin.getSelectedItem();
         upgradeID = Integer.parseInt("2" + itemText);
 
@@ -109,7 +120,7 @@ public class FirstFragment extends Fragment {
 
         Spinner lowSpin = view.findViewById(R.id.bottom_path);
         itemText = (String) lowSpin.getSelectedItem();
-        upgradeID = Integer.parseInt(itemText);*/
+        upgradeID = Integer.parseInt(itemText);
 
         //cost += repository.getUpgradeCost(upgradeID);
 
@@ -117,7 +128,9 @@ public class FirstFragment extends Fragment {
 
         Toast showResult = Toast.makeText(getActivity(),"The final cost is: $" + finalCost, Toast.LENGTH_LONG);
 
-        showResult.show();
+        showResult.show();*/
+
+        UpgradeRoomDatabase.databaseWriteExecutor.execute(this::run);
     }
 
     @Override
@@ -126,4 +139,17 @@ public class FirstFragment extends Fragment {
         binding = null;
     }
 
+    private void run() {
+
+        UpgradeRepository repository = new UpgradeRepository(getActivity().getApplication());
+
+        Upgrade upgrade = repository.getUpgrade(6);
+
+        int cost = upgrade.getUpgradeCost();
+
+        String finalCost = cost + " ";
+
+        Toast showResult = Toast.makeText(getActivity(), "The final cost is: $" + cost, Toast.LENGTH_LONG);
+        showResult.show();
+    }
 }

@@ -17,14 +17,9 @@ public class Upgrade {
     public int mCost;
 
     //public int getUpgradeID(){return this.mUpgradeID;}
-    public int getUpgradeCost(int upgradeID)
+    public int getUpgradeCost()
     {
-        if(mUpgradeID == upgradeID)
-        {
-            return this.mCost;
-        }
-
-        return 0;
+        return this.mCost;
     }
 
     public Upgrade(@NonNull int towerID, int upgradeID, String title, int cost)

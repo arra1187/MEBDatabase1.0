@@ -28,7 +28,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/prompt" />
 
-    <Spinner
+
+    !Spinner
         android:id="@+id/top_path"
         android:layout_width="80dp"
         android:layout_height="48dp"
@@ -40,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
+    !Spinner
         android:id="@+id/middle_path"
         android:layout_width="80dp"
         android:layout_height="48dp"
@@ -53,7 +54,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499" />
 
-    <Spinner
+    !Spinner
         android:id="@+id/bottom_path"
         android:layout_width="80dp"
         android:layout_height="48dp"

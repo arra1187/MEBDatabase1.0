@@ -5,8 +5,10 @@ import android.os.Bundle;
 import com.example.mebdatabase10.databinding.ActivityMainBinding;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.PersistableBundle;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -18,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -29,7 +32,25 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_first);
+
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        setSupportActionBar(binding.toolbar);
+
+        /*NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+
+        binding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });*/
+
+        /*setContentView(R.layout.fragment_first);
 
         Spinner topSpin = findViewById(R.id.top_path);
         ArrayAdapter<CharSequence> topAdapter = ArrayAdapter.createFromResource(this,
@@ -52,32 +73,28 @@ public class MainActivity extends AppCompatActivity {
         lowSpin.setAdapter(lowAdapter);
         //spinner.setOnItemSelectedListener(this);
 
-        //binding = ActivityMainBinding.inflate(getLayoutInflater());
-        //setContentView(binding.getRoot());
-
-        //setSupportActionBar(binding.toolbar);
-
-        //NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        //appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-
-        /*binding.fab.setOnClickListener(new View.OnClickListener() {
+        Button enterButton = (Button) findViewById(R.id.enter_button);
+        enterButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //
             }
         });*/
     }
 
     /*@Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+    public void onPostCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState)
     {
-        String tier = parent.getItemAtPosition(position).toString();
-    }
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) { }*/
+        setSupportActionBar(binding.toolbar);
+
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
