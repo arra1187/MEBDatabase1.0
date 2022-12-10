@@ -1,16 +1,20 @@
 package com.example.mebdatabase10;
 
+import android.app.Application;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 
@@ -23,7 +27,34 @@ public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
 
+    //private UpgradeRepository repository;
+
+    //private final List<Upgrade> mAllUpgrades;
+
     Spinner topTextView, midTextView, bottomTextView;
+
+    TextView costView;
+
+    public void onStart()
+    {
+        super.onStart();
+        ViewModel upgradeViewModel = new ViewModelProvider(getActivity()).get(UpgradeViewModel.class);
+    }
+
+    /*@Override
+    public FirstFragment (Application application)
+    {
+        repository = new UpgradeRepository(application);
+        mAllUpgrades = repository.getAllUpgrades();
+    }*/
+
+    /*@Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        //setContentView(R.layout.fragment_first);
+        mViewModel = ViewModelProviders.of(this).get(UpgradeViewModel.class);
+    }*/
 
     @Override
     public View onCreateView(
@@ -41,11 +72,22 @@ public class FirstFragment extends Fragment {
         //midTextView = fragmentFirstLayout.findViewById(R.id.middle_path);
         //bottomTextView = fragmentFirstLayout.findViewById(R.id.bottom_path);
 
+        costView = fragmentFirstLayout.findViewById(R.id.costView);
+
+        /*repository = new UpgradeRepository(getActivity().getApplication());
+
+        UpgradeRoomDatabase.databaseWriteExecutor.execute(() ->
+        {
+            mAllUpgrades = repository.getAllUpgrades();
+        });*/
+
         return fragmentFirstLayout;
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        ViewModel upgradeViewModel = new ViewModelProvider(getActivity()).get(UpgradeViewModel.class);
 
         /*binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,14 +110,32 @@ public class FirstFragment extends Fragment {
         enterButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view, ViewModel upgradeViewModel) {
                 giveCost(view);
             }
         });
     }
 
-    public void giveCost(View view)
+    public void giveCost(View view, ViewModel upgradeViewModel)
     {
+        Upgrade upgrade = upgradeViewModel.getUpgrades().get(0);
+
+        int cost = upgrade.getUpgradeCost();
+
+        String finalCost = "$" + cost + " ";
+
+        costView.setText(finalCost);
+    }
+    //UpgradeRepository repository = new UpgradeRepository(getActivity().getApplication());
+
+    //Upgrade upgrade = repository.getUpgrade(0);
+
+    //int cost = upgrade.getUpgradeCost();
+
+    //String finalCost = "$" + cost + " ";
+
+    //costView.setText(finalCost);
+
         /*UpgradeRepository repository = new UpgradeRepository(getActivity().getApplication());;
         int cost = 0;
 
@@ -130,8 +190,8 @@ public class FirstFragment extends Fragment {
 
         showResult.show();*/
 
-        UpgradeRoomDatabase.databaseWriteExecutor.execute(this::run);
-    }
+    //    UpgradeRoomDatabase.databaseWriteExecutor.execute(this::run);
+    //}
 
     @Override
     public void onDestroyView() {
@@ -139,17 +199,19 @@ public class FirstFragment extends Fragment {
         binding = null;
     }
 
-    private void run() {
+    /*private void run() {
 
         UpgradeRepository repository = new UpgradeRepository(getActivity().getApplication());
 
-        Upgrade upgrade = repository.getUpgrade(6);
+        Upgrade upgrade = repository.getUpgrade(0);
 
         int cost = upgrade.getUpgradeCost();
 
-        String finalCost = cost + " ";
+        String finalCost = "$" + cost + " ";
 
-        Toast showResult = Toast.makeText(getActivity(), "The final cost is: $" + cost, Toast.LENGTH_LONG);
-        showResult.show();
-    }
+        costView.setText(finalCost);
+
+        //Toast showResult = Toast.makeText(getActivity(), finalCost, Toast.LENGTH_LONG);
+        //showResult.show();
+    }*/
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".FirstFragment">
 
     <TextView
@@ -28,41 +29,53 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/prompt" />
 
-
-    !Spinner
-        android:id="@+id/top_path"
-        android:layout_width="80dp"
-        android:layout_height="48dp"
-        android:contentDescription="@string/top"
-        android:dropDownSelector="@color/black"
-        android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/middle_path"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    !Spinner
-        android:id="@+id/middle_path"
-        android:layout_width="80dp"
-        android:layout_height="48dp"
-        android:contentDescription="@string/middle"
-        android:dropDownSelector="@color/black"
-        android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/bottom_path"
-        app:layout_constraintStart_toEndOf="@+id/top_path"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
-
-    !Spinner
-        android:id="@+id/bottom_path"
-        android:layout_width="80dp"
-        android:layout_height="48dp"
-        android:contentDescription="@string/bottom"
-        android:dropDownSelector="@color/black"
-        android:spinnerMode="dropdown"
+    <TextView
+        android:id="@+id/costView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#EFE7A1"
+        android:text="@string/Cost"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/middle_path"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_button" />
+
+
+    !Spinner
+    android:id="@+id/top_path"
+    android:layout_width="80dp"
+    android:layout_height="48dp"
+    android:contentDescription="@string/top"
+    android:dropDownSelector="@color/black"
+    android:spinnerMode="dropdown"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/middle_path"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+    !Spinner
+    android:id="@+id/middle_path"
+    android:layout_width="80dp"
+    android:layout_height="48dp"
+    android:contentDescription="@string/middle"
+    android:dropDownSelector="@color/black"
+    android:spinnerMode="dropdown"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/bottom_path"
+    app:layout_constraintStart_toEndOf="@+id/top_path"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.499" />
+
+    !Spinner
+    android:id="@+id/bottom_path"
+    android:layout_width="80dp"
+    android:layout_height="48dp"
+    android:contentDescription="@string/bottom"
+    android:dropDownSelector="@color/black"
+    android:spinnerMode="dropdown"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/middle_path"
+    app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

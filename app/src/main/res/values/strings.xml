@@ -27,4 +27,6 @@
     <string name="bottom">Bottom Path</string>
 
     <string name="thing">Hello there</string>
+
+    <string name="Cost">Cost</string>
 </resources>

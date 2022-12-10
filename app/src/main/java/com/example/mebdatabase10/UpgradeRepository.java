@@ -9,11 +9,12 @@ import java.util.concurrent.Callable;
 
 public class UpgradeRepository {
     private UpgradeDao mUpgradeDao;
-    //private LiveData<List<Upgrade>> mAllUpgrades;
+    private LiveData<List<Upgrade>> mAllUpgrades;
 
     UpgradeRepository(Application application) {
         UpgradeRoomDatabase db = UpgradeRoomDatabase.getDatabase(application);
         mUpgradeDao = db.upgradeDao();
+        mAllUpgrades = mUpgradeDao.getUpgrades();
     }
 
     void insert(Upgrade upgrade) {
@@ -23,10 +24,15 @@ public class UpgradeRepository {
         });
     }
 
-    Upgrade getUpgrade(int upgradeID) {
+    /*Upgrade getUpgrade(int upgradeID) {
         //UpgradeRoomDatabase.databaseWriteExecutor.execute(() ->
         //{
             return mUpgradeDao.getUpgrade(upgradeID);
         //});
+    }*/
+
+    LiveData<List<Upgrade>> getAllUpgrades()
+    {
+        return mAllUpgrades;
     }
 }

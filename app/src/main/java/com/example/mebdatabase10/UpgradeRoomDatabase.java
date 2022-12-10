@@ -3,16 +3,16 @@ package com.example.mebdatabase10;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
+import androidx.room.AutoMigration;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Upgrade.class}, version = 1, exportSchema = false)
+@Database(entities = {Upgrade.class}, version = 2, exportSchema = false)
 public abstract class UpgradeRoomDatabase extends RoomDatabase
 {
 
@@ -25,20 +25,23 @@ public abstract class UpgradeRoomDatabase extends RoomDatabase
 
     static UpgradeRoomDatabase getDatabase(final Context context)
     {
-        synchronized (UpgradeRoomDatabase.class)
+        if(INSTANCE == null)
         {
-            if (INSTANCE == null)
+            synchronized (UpgradeRoomDatabase.class)
             {
-                INSTANCE = Room.databaseBuilder(context.getApplicationContext(), UpgradeRoomDatabase.class, "upgrade_database")
-                        .addCallback(sRoomDatabaseCallback)
-                        .build();
+                if (INSTANCE == null) {
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), UpgradeRoomDatabase.class, "upgrade_database")
+                            .fallbackToDestructiveMigration()
+                            .addCallback(sRoomDatabaseCallback)
+                            .build();
+                }
             }
         }
 
         return INSTANCE;
     }
 
-    private static final RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback()
+    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback()
     {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db)
@@ -98,7 +101,7 @@ public abstract class UpgradeRoomDatabase extends RoomDatabase
                 upgrade = new Upgrade(11, 35, "Crossbow Master", 23500);
                 dao.insert(upgrade);
 
-                upgrade = new Upgrade(11, 6, "Apex Plasma Master", 350000);
+                upgrade = new Upgrade(11, 60, "Apex Plasma Master", 350000);
                 dao.insert(upgrade);
             });
         }

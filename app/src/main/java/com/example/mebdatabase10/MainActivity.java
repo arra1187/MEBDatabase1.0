@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.PersistableBundle;
 import android.view.View;
 
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -24,19 +26,31 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.List;
+import java.util.Observer;
+
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
+    //public ViewModel mUpgradeViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_main);
 
-        setSupportActionBar(binding.toolbar);
+       // final ViewModel mUpgradeViewModel = new ViewModelProvider(this).get(UpgradeViewModel.class);
+       // mUpgradeViewModel.getUpgrades().observer(this, new Observer() {
+
+       // })
+
+        //binding = ActivityMainBinding.inflate(getLayoutInflater());
+        //setContentView(binding.getRoot());
+
+        //setSupportActionBar(binding.toolbar);
 
         /*NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
@@ -79,6 +93,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //
+            }
+        });*/
+
+        /*Button enterButton = findViewById(R.id.enter_button);
+        enterButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                List<Upgrade> allUpgrades = mUpgradeViewModel.getUpgrades();
             }
         });*/
     }
