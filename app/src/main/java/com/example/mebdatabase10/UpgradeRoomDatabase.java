@@ -32,7 +32,8 @@ public abstract class UpgradeRoomDatabase extends RoomDatabase
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(), UpgradeRoomDatabase.class, "upgrade_database")
                             .fallbackToDestructiveMigration()
-                            .addCallback(sRoomDatabaseCallback)
+                            //.addCallback(sRoomDatabaseCallback)
+                            .createFromAsset("tower.db")
                             .build();
                 }
             }

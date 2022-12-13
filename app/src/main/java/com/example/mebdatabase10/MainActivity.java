@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.PersistableBundle;
 import android.view.View;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -24,6 +25,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -40,7 +42,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.fragment_first);
+
+        UpgradeViewModel mUpgradeViewModel;
+
+        //mUpgradeViewModel = new ViewModelProvider(this).get(UpgradeViewModel.class);
+        mUpgradeViewModel = new ViewModelProvider(this, new MyViewModelFactory(this.getApplication())).get(UpgradeViewModel.class);
+
+        LiveData<List<Upgrade>> mUpgradeList = mUpgradeViewModel.getUpgrades();
+
+        Button enterButton = (Button) findViewById(R.id.enter_button);
+        TextView costView = findViewById(R.id.costView);
+
+        enterButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Upgrade upgrade = mUpgradeList.getValue().get(0);
+                String costText = "$" + upgrade.getUpgradeCost() + " ";
+                costView.setText(costText);
+            }
+        });
+
+        //final UpgradeListAdapter = new UpgradeListAdapter(new UpgradeListAdapter.UpgradeDiff());
 
        // final ViewModel mUpgradeViewModel = new ViewModelProvider(this).get(UpgradeViewModel.class);
        // mUpgradeViewModel.getUpgrades().observer(this, new Observer() {

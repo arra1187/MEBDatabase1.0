@@ -105,8 +105,8 @@ public class FirstFragment extends Fragment {
                 giveCost(view);
             }
         });*/
-
-        Button enterButton = (Button) view.findViewById(R.id.enter_button);
+    }
+        /*Button enterButton = (Button) view.findViewById(R.id.enter_button);
         enterButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -125,7 +125,7 @@ public class FirstFragment extends Fragment {
         String finalCost = "$" + cost + " ";
 
         costView.setText(finalCost);
-    }
+    }*/
     //UpgradeRepository repository = new UpgradeRepository(getActivity().getApplication());
 
     //Upgrade upgrade = repository.getUpgrade(0);
